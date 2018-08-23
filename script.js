@@ -1,6 +1,22 @@
 const submitButton = document.querySelector('#submit');
 const uploadButton = document.querySelector('#upload');
 
+const showMessage = (message, type)  => {
+  const cssClass = `alert-${type}`;
+  const messageEl = document.querySelector('#message');
+  messageEl.classList.remove('d-none');
+  messageEl.classList.add(cssClass);
+  messageEl.innerHTML = message;
+  setTimeout(() => {
+    messageEl.classList.add('d-none');
+    messageEl.classList.remove(cssClass);
+  }, 5000);
+}
+
+const uploadedAction = (data) => {
+  console.log(data)
+  showMessage(data.message, data.status);
+}
 
 submitButton.addEventListener('click', () => {
   const form = new FormData(document.querySelector('#profileData'));
@@ -14,7 +30,7 @@ submitButton.addEventListener('click', () => {
 
   fetch(request)
     .then(response => response.json())
-    .then(data => { console.log(data); })
+    .then(uploadedAction)
 })
 
 uploadButton.addEventListener('click', () => {
@@ -32,5 +48,5 @@ uploadButton.addEventListener('click', () => {
 
   fetch(request)
     .then(response => response.json())
-    .then(data => { console.log(data); })
+    .then(uploadedAction)
 })

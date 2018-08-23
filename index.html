@@ -12,6 +12,7 @@
       <h1>File Upload</h1>
       <hr>
       <form method="POST" action="upload.php" id="profileData" enctype="multipart/form-data">
+        <h2>With Form:</h2>
         <div class="form-row">
           <div class="col">
             <div class="form-group">
@@ -36,6 +37,7 @@
       </form>
       <hr>
       <div>
+        <h2>Without Form:</h2>
         <div class="form-group">
           <label for="upfile-2">Profile Picture</label>
           <input type="file" class="form-control" id="upfile-2">
@@ -44,6 +46,8 @@
           <button id="upload" class="btn btn-outline-primary">Upload</button>
         </div>
       </div>
+      <hr>
+      <div id="message" class="alert d-none"></div>
     </div>
     <script src="script.js"></script>
   </body>
